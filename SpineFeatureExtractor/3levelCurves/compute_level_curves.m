@@ -1,18 +1,20 @@
-% Compute level curves for all the spines under a root folder
-%
-% Compute level curves for all the spines under a root folder
-%
-% @author Luengo-Sanchez, S.
-%
-% @param root_spines_neck_repaired_path path to the folder where the spines
-% with the repaired neck should be saved
-%
-% @param number_of_ranges the number of level curves that must be computed
-% for each spine
-%
-% @examples
-% See Main.m
 function compute_level_curves(root_spines_neck_repaired_path,number_of_ranges,remove,threshold)
+%COMPUTE_LEVEL_CURVES Computes level curves for all the spines under a root
+%folder.
+%
+%   COMPUTE_LEVEL_CURVES(root_spines_neck_repaired_path, number_of_ranges,
+%   remove, threshold) Given root_spines_neck_repaired_path which is the
+%   folder where spines with repaired neck are stored, level curves will be
+%   computed for them. The number of computed level curves is defined by
+%   number_of_ranges. If remove is TRUE, those spines with double curve
+%   defect will be removed. Threshold is used to decide when double curve
+%   defect exists. The smaller the threshold value, the more the number of
+%   double curve defects detected.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also COMPUTE_SPINE_CURVES, DETECT_DOUBLE_CURVE
+
     list_dendrites = dir(root_spines_neck_repaired_path);
 
     for i=3:size(list_dendrites,1)
