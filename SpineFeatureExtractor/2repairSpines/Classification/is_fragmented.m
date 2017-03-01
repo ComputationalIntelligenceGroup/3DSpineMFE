@@ -1,16 +1,16 @@
-% Check level of fragmentation of the spine
-%
-% Check if a spine is fragmented or correct. Then write it in a file.
-%
-% @author Luengo-Sanchez, S.
-%
-% @param data it is an Spine object, i.e., vertices and faces
-%
-% @examples
-% See clasify_fragmented_spines.m
-
-%
 function file_to_save = is_fragmented(data)	
+%IS_FRAGMENTED Checks level of fragmentation of the spine.
+%
+%   fragmentation = IS_FRAGMENTED(spine_object) given a Spine object, i.e.,
+%   vertices and faces, the fragmentation of that spine is returned:
+%   - fragmentation = 1, the spine is partially fragmented.
+%   - fragmentation = 2, the spine is fragmented.
+%   - fragmentation = 3, the spine is NOT fragmented.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also CLASSIFY_FRAGMENTED_SPINES, SPLITFV, BWLABELN
+
 	%If the mesh is composed of 2 or more components it is fragmented if not it is correct.
 	if(size(splitFV(data.Spine.faces, data.Spine.vertices), 1) > 1)
 	
