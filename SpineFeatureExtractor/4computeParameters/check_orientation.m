@@ -1,4 +1,19 @@
 function [insertion_point] = check_orientation(repaired_spine, curve)
+%CHECK_ORIENTATION Checks the spine orientation. This function rotates the
+%spine (and its curves and centroids) aligning the vector between the
+%insertion point and the centroid of the first curve with the Z axis.
+%
+%   [insertion_point] = CHECK_ORIENTATION(repaired_spine, curve)
+%   
+%   Input parameters:
+%       - repaired_spine struct : Spine with repaired neck.
+%       - curve cell-array : Level curves of the spine.
+%
+%   Output parameters:
+%       - insertion_point [1x3] integer : Insertion point coordinates.
+%
+%Author: Luengo-Sanchez, S.
+
    curve_centroids=zeros(1,3); 
                      
    %Compute parameters of each curve.

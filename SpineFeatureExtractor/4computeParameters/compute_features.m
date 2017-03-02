@@ -1,6 +1,20 @@
-%Run directories to compute the level curves
-%All spines must have the same number of curves
 function compute_features(root_spines_neck_repaired_path,file_name)
+%COMPUTE_FEATURES Computes features for all repaired spines with level
+%curves inside a folder of dendrites. Then an XLS file with extracted
+%features is created.
+%
+%   COMPUTE_FEATURES(root_spines_neck_repaired_path, file_name)
+%
+%   Parameters:
+%       -root_spines_neck_repaired_path character-vector : The folder where
+%           spines with repaired neck and level curves computed are stored.
+%       - file_name character-vector : The name of the XLS file where
+%           computed features are going to be saved.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also COMPUTE_SPINE_FEATURES
+
     [~,~,spine_ext]=fileparts(file_name);
     if(~ strcmp(spine_ext,'.xls'))
         warning('The extension of the file name does not correspond with an excel file, xls extension will be added');
