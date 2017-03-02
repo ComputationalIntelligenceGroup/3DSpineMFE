@@ -1,20 +1,26 @@
-% Develop by Jesus Pérez
-% Get the raw model, the function values at each vertex and a number of 
-% factors in which it should be divided; then, each vertex is allocated
-% in a factor based on the considered differentiation function. In order 
-% to make each triangle belong to a single factor, some vertices are moved.
+function [newModel, newFuncVals, limits] = factorizeModel(model, funcVals, factorNum)
+%FACTORIZEMODEL Gets the raw model, the function values at each vertex and
+%a number of factors in which it should be divided; then, each vertex is 
+%allocated in a factor based on the considered differentiation function. 
+%In order to make each triangle belong to a single factor, some vertices 
+%are moved.
 %
-% Parameters:
+%   [newModel, newFuncVals, limits] = factorizeModel(model, funcVals,
+%   factorNum) 
+%   
+%   Input parameters:
 %       - model struct : The model to check the factorization.
-%       - funcVals [1xN] double : The function value at each vertex.
+%       - funcVals [1xN double] : The function value at each vertex.
 %       - factorNum integer : The number of factors to divide the model.
 %
-% Returns:
+%   Output parameters:
 %       - newModel struct : The new model with moved vertices.
 %       - newFuncVals [1xN] double : The function value at each vertex.
 %       - limits [1xL] double : The limits of the factors.
 %
-function [newModel, newFuncVals, limits] = factorizeModel(model, funcVals, factorNum)
+%Author: Jesus Pérez
+%
+%See also LIMITMODEL
 
     % Create upper limits
     minval = min(funcVals); 

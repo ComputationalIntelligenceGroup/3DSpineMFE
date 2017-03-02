@@ -1,22 +1,22 @@
-% Reallocate repaired spines to their original position
-%
-% During the repairing process spines are voxelized. Because the
-% voxelization operation over the original mesh, the spines are misplaced
-% in the space. We need to recover their original position to make their 
-% neck growth through the dendrite. 
-% 
-% 
-% 
-%
-% @author Luengo-Sanchez, S.
-%
-% @param root_spines_repaired_path path to the folder where repaired spines
-% were saved
-% @examples
-% See Main.m
-
 function reallocate_spine(root_spines_repaired_path)
-	listDendrites = dir(root_spines_repaired_path);
+%REALLOCATE_SPINE Reallocates repaired spines to their original position.
+%During the repairing process, spines are voxelized. Because the
+%voxelization operation over the original mesh, the spines are misplaced in
+%the space. We need to recover their original position to make their neck
+%growth through the dendrite.
+%
+%   REALLOCATE_SPINE(root_spines_repaired_path)
+%
+%   Parameters:
+%       - root_spines_repaired_path character-vector : Path that contains
+%           repaired spines for each dendrite. All spines are reallocated
+%           to their original position.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also RESIZE_SHIFT_SPINE
+
+    listDendrites = dir(root_spines_repaired_path);
     
     %For each repaired spine resize and shift to its original position
 	for i = 1:(size(listDendrites,1) - 2)

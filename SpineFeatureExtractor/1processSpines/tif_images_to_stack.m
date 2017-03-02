@@ -1,18 +1,16 @@
-% Group all TIF images of a dendrite in a stack of TIF images
-%
-% Group all TIF images of a dendrite in a stack of TIF images
-%
-% @author Luengo-Sanchez, S.
-%
-% @param root_TIF_path path to the root folder where folders of each
-% dendrite containing the TIF images are placed
-% @param root_stack_TIF_path path to the folder where the stack of TIF
-% images will be saved
-%
-% @examples
-% See Main.m
-
 function tif_images_to_stack(root_TIF_path, root_stack_TIF_path)
+%TIF_IMAGES_TO_STACK Groups all TIF images of a dendrite in a stacked TIF.
+%
+%   TIF_IMAGES_TO_STACK(root_TIF_path, root_stack_TIF_path)
+%
+%   Parameters:
+%       - root_TIF_path character-vector : Path of the folder that contains
+%           TIF images of dendrites.
+%       - root_stack_TIF_path character-vector : Path of the folder where
+%           stacked TIF images that groups all images of each dendrite are
+%           saved.
+%
+%Author: Luengo-Sanchez, S.
 
 	dendrites = dir(root_TIF_path);%Load all names of the folders inside root directory
 	

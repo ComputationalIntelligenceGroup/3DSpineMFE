@@ -1,20 +1,27 @@
-% Read spines from the VRML file
-%
-% Read spines from the VRML file saving each spine in a .mat file.
-%
-% @author Baguear
-%
-% @param filename path to the VRML file where spine definitions are placed
-% @param output_path path to the folder where .mat will be saved
-% @param physical_origin coordinates of the origin of the stack of images 
-% @param physical_length length of the space where the spines were placed
-% @param stack number of tif images in the stack
-% @param element_name name of the dendrite where the spine is placed
-%
-% @examples
-% See process_VRMLs.m
-
 function read_VRML(filename, output_path, physical_origin, physical_length, stack, element_name)
+%READ_VRML Reads spines from the VRML file. 
+%And saves each spine to a .MAT file.
+%
+%   READ_VRML(filename, output_path, physical_origin, physical_length,
+%   stack, element_name) 
+%
+%   Parameters:
+%       - filename character-vector : Path of the VRML file that contains
+%           spine definition.
+%       - output_path character-vector : Path where spine .MAT files are
+%           going to be saved.
+%       - physical_origin [1x3] double : Refers to the coordinates of the
+%           origin of the stack of images.
+%       - physical_length [1x3] double : Length of the space where the
+%           spines were placed.
+%       - stack integer : Number of TIF images in the stack (Z coordinate).
+%       - element_name character-vector : Name of the dendrite where the
+%           spine is placed.
+%
+%Author: Baguear.
+%
+%See also: PROCESS_VRMLS
+
     spine_counter = 0;
 
     %Open file and read it line from line

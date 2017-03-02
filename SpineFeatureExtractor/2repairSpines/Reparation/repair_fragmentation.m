@@ -1,22 +1,28 @@
-%Repair partially and completely fragmented spines
-%
-%Repair spines according to the level of fragmentation of the spine.
-%Depending the level of fragmentation the size of the dilation mask
-%changes.
-%
-% @author Luengo-Sanchez, S.
-%
-% @param spines_partially_fragmented_file path to the ZIP files where VRMLs and TIF are compressed
-% @param spines_fragmented_file path to the folder where VRML files will be saved
-% @param spines_correct_file path to the folder where the stack of TIFs images will be saved
-% @param root_spines_repaired_path path to the folder where SWC files will be saved
-% @param root_MAT_path path to the folder where MAT files will be saved
-%
-% @examples
-% See Main.m
-
 function repair_fragmentation(spines_partially_fragmented_file, spines_fragmented_file, spines_correct_file, root_spines_repaired_path, root_MAT_path)
-	
+%REPAIR_FRAGMENTATION Repairs spines.
+%According to the level of fragmentation of the spine. For repairing, 
+%dilation and erosion is used, depending the level of fragmentation, the 
+%size of the dilation mask changes.
+%
+%   REPAIR_FRAGMENTATION(spines_partially_fragmented_file,
+%   spines_fragmented_file, spines_correct_file, root_spines_repaired_path,
+%   root_MAT_path)
+%
+%   Parameters:
+%       - spines_partially_fragmented_file character-vector : Path of the
+%           text file that contains a list of paths of partially fragmented
+%           spines.
+%       - spines_fragmented_file character-vector : Path of the text file
+%           that contains a list of paths of fragmented spines.
+%       - spines_correct_file character-vector : Path of the text file
+%           that contains a list of paths of correct spines.
+%       - root_spines_repaired_path character-vector : Path to the folder
+%           where repaired spines are going to be saved.
+%       - root_MAT_path character-vector : Path to the folder that contains
+%           spine MAT files used to create a path tree for repaired spines.
+%
+%Author: Luengo-Sanchez, S.
+
 	%Create path tree for repaired spines
 	tree_MAT = dir(root_MAT_path);
 	for i = 3:length(tree_MAT)

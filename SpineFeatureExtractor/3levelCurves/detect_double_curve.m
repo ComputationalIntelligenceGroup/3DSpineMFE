@@ -1,14 +1,26 @@
-%Function to identify the names of the spines that have two curves in place
-%of only one for a level. Remove one of the two curves simplify the model
-%and ease the simulation of new spines from the model.
-%Input parameters:
-%    root_spines_neck_repaired_path: The path to the repaired spines are
-%    placed. Curves must be computed previously.
-%Output parameters
-%   double_curve_spines: Spines that have at least two curves for a level.
-%   num_curve_level_problem: The number of the curve level that presents
-%   the problem.
 function [double_curve_spines,num_curve_level_problem]=detect_double_curve(root_spines_neck_repaired_path,threshold)
+%DETECT_DOUBLE_CURVE Detects double curve defect. 
+%Identifies the names of the spines that have two curves in place of only
+%one for a level.
+%
+%   [double_curve_spines, num_curve_level_problem] =
+%   DETECT_DOUBLE_CURVE(root_spines_neck_repaired_path, threshold) 
+%
+%   Input parameters:
+%       - root_spines_neck_repaired_path character-vector : Folder where
+%           spines with repaired neck are stored.
+%       - threshold double : The smaller the threshold value, the more the
+%           number of double curve defects detected, e.g., for a threshold
+%           value of 0, all spines will have double curve defect.
+%
+%   Output parameters:
+%       - double_curve_spines cell-array : Contains the path of those
+%           spines with double curve defect.
+%       - num_curve_level_problem cell-array : Contains the number of the
+%           curve level that presents the problem.
+%
+%Author: Luengo-Sanchez, S.
+
     totalDistances = [];
     double_curve_spines = {};
     num_curve_level_problem={};

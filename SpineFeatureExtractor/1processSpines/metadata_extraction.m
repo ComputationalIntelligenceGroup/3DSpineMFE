@@ -1,19 +1,21 @@
-
-% Reads a TIF file and extract metadata from it.
-%
-% This function reads a .tif file and extracts metadata from it.
-% Information about dimensions of the spines is saved as metadata in the .tif file. 
-% All the images in the stack have the metadata so anyone of them can be used. 
-% Needed for the Voxelization process.
-%
-% @author Luengo-Sanchez, S.
-%
-% @param filename path to the TIF file
-%
-% @examples
-% See processVRMLs.m
-
 function [physicalO, physicalL, stack, element_name] = metadata_extraction(filename)
+%METADATA_EXTRACTION Reads a TIF file and extracts metadata from it.
+%
+%   METADATA_EXTRACTION(tif_file_path) 
+%
+%   Parameters:
+%       - tif_file_path character-vector : Path of the TIF file for
+%           extracting its metadata. 
+%           Information about dimensions of the spines is saved as metadata
+%           in the TIF file.
+%           All the images in the stack have the same metadata, so any of
+%           them can be used.
+%
+%This function is needed for the Voxelization process.
+%Author: Luengo-Sanchez, S.
+%
+%See also PROCESS_VRMLS
+
 	metadataInfo = imfinfo(filename);
 	text = metadataInfo.ImageDescription;
 	

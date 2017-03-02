@@ -1,24 +1,27 @@
-% Classify spines in correct or fragmented
-%
-% The script read every spine under a root directory and classify it as correct or fragmented. 
-% As a result 3 files are obtained with the paths and names of the spines
-% that were not fragmented, were partially fragmented or were completely
-% fragmented.
-%
-% @author Luengo-Sanchez, S.
-%
-% @param root_MAT_path path to the folder where MAT files will be saved
-% @param spines_correct_file path to file where spines that are not fragmented are
-% saved
-% @param spines_partially_fragmented_file path to file where spines highly fragmented
-% are saved
-% @param spines_fragmented_file path to file where spines partially 
-% fragmented are saved
-% @examples
-% See process_VRMLs.m
-
 function classify_fragmented_spines(root_MAT_path, spines_correct_file, spines_partially_fragmented_file, spines_fragmented_file)
-	list_dendrites = dir(root_MAT_path);
+%CLASSIFY_FRAGMENTED_SPINES Classifies spines.
+%In correct, partially fragmented or fragmented.
+%
+%   CLASSIFY_FRAGMENTED_SPINES(root_MAT_path, spines_correct_file,
+%   spines_partially_fragmented_file, spines_fragmented_file)
+%
+%   Parameters:
+%       - root_MAT_path character-vector : Path of the folder where spines
+%           that are going to be classified are saved.
+%       - spines_correct_file character-vector : Path of the text file
+%           where a list of paths of correct spines is going to be saved. 
+%       - spines_partially_fragmented_file character-vector : Path of the
+%           text file where a list of paths of partially fragmented spines
+%           is going to be saved.
+%       - spines_fragmented_file character-vector : Path of the text file
+%           where a list of paths of fragmented spines is going to be
+%           saved.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also PROCESS_VRMLS
+
+    list_dendrites = dir(root_MAT_path);
     
     %Open the connection to the files where path of the spines are saved
     %according their level of fragmentation 

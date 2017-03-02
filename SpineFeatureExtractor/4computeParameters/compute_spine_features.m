@@ -1,4 +1,38 @@
 function [instance_row] = compute_spine_features(repaired_spine,insertion_point_idx,curve)
+%COMPUTE_SPINE_FEATURES Computes the features of the spine. 
+%Because of the spine orientation dependency of some of the features,
+%reorientation operations are performed to make the spine look to the top
+%and to the right.
+%
+%   [instance_row] = compute_spine_features(repaired_spine,
+%   insertion_point_idx, curve)
+%
+%   Input parameters:
+%       - repaired_spine struct : Spine with repaired neck.
+%       - insertion_point_idx integer : X coordinate in the
+%           repaired_spine.vertices matrix that corresponds to the spine
+%           insertion point.
+%       - curve cell-array : Level curves of the spine.
+%
+%   Output parameters:
+%       - instance_row [1xN] array : The row containing computed spine
+%           features.
+%
+%   Computed features (some of them, like height, or ellipse axes produce
+%   many features):
+%       - Height.
+%       - Major axis of ellipse.
+%       - Minor axis of ellipse.
+%       - Radio between sections.
+%       - Growing direction of the spine.
+%       - Instant direction.
+%       - Volume.
+%       - Volume of each region.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also CHECK_ORIENTATION
+
     %Spine is translated to place the insertion point as the origin
     insertion_point = repaired_spine.vertices(insertion_point_idx,:);
     repaired_spine.vertices=bsxfun(@minus,repaired_spine.vertices,insertion_point);

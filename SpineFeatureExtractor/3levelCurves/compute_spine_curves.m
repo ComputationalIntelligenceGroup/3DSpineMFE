@@ -1,18 +1,19 @@
-% Compute the level curves of a spine according to the geodesic distance
-% from the insertion point to the vertices of the spine.
-%
-% Compute the curve levels of a spine according to the geodesic distance
-% from the insertion point to the vertices of the spine.
-%
-% @author Luengo-Sanchez, S.
-%
-% @param spine_path path to the spine
-% @param spine_data a spine object 
-% @param number_of_ranges number of level curves
-%
-% @examples
-% See Main.m
 function compute_spine_curves(spine_path, spine_data, number_of_ranges)
+%COMPUTE_SPINE_CURVES Computes the level curves of a spine.
+%According to the geodesic distance from the insertion point to the
+%vertices of the spine.
+%
+%   COMPUTE_SPINE_CURVES(spine_path, spine_data, number_of_ranges)
+%   
+%   Parameters:
+%       - spine_path character-vector : Path to the spine.
+%       - spine_data mat-variables : Spine object.
+%       - number_of_ranges integer: Number of level curves.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also FACTORIZEMODEL
+
     %Compute geodesic distance from the insertion point to the other points
     %of the mesh.
     [geodesic_dist,~,~] = perform_fast_marching_mesh(spine_data.repaired_spine.vertices, spine_data.repaired_spine.faces, spine_data.insertion_point_idx);

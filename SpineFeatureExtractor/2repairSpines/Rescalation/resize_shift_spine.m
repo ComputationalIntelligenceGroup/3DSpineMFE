@@ -1,22 +1,25 @@
-% Resize and shift the spine to its original dimensions and place.
+function resize_shift_spine(root_spines_repaired_path, original_spine, smoothed_spine)
+%RESIZE_SHIFT_SPINE Resizes and shifts the spine.
+%Resizes and shifts the spine to its original dimensions and place.
 %
-% Given a spine, spine is resize to its original size by means of resize
-% the new bounding box to the lengths of the original bounding box. Also
-% the spine is shifted to recover its original position.
+%   RESIZE_SHIFT_SPINE(root_spines_repaired_path, original_spine,
+%   smoothed_spine)
 %
-% @author Luengo-Sanchez, S.
+%   Parameters:
+%       - root_spines_repaired_path character-vector : Path to the folder
+%           where resized and shifted smoothed spine is going to be saved.
+%       - original_spine struct : The original spine as it was read from
+%           the VRML file. Is used to obtain original size and position.
+%       - smoothed_spine struct : A repaired and smoothed spine obtained
+%           from fragmentation reparation. will be resized to the original
+%           size (by means of resizing the new bounding box to the lengths
+%           of the original bounding box and shifted to the original
+%           position.
 %
-% @param root_spines_repaired_path path to the folder where repaired spines
-% were saved
-% @param original_spine original spine object, i.e., spine as it was read
-% from the VRML file
-% @param smoothed_spine repaired and smoothed spine obtained from
-% fragmentation reparation
+%Author: Luengo-Sanchez, S.
 %
-% @examples
-% See reallocate_spine.m
+%See also REALLOCATE_SPINE
 
-function resize_shift_spine(root_spines_repaired_path, original_spine, smoothed_spine) 
     %Shift a corner of the bounding box of the original spine to the origin 
 	shift_array = min(original_spine.vertices, [], 1);
 	shifted_original_spine = original_spine;
