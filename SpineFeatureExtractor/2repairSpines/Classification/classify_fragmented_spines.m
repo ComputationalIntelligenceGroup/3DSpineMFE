@@ -1,14 +1,21 @@
 function classify_fragmented_spines(root_MAT_path, spines_correct_file, spines_partially_fragmented_file, spines_fragmented_file)
-%CLASSIFY_FRAGMENTED_SPINES Classifies spines in correct, partially
-%fragmented or fragmented.
+%CLASSIFY_FRAGMENTED_SPINES Classifies spines.
+%In correct, partially fragmented or fragmented.
 %
 %   CLASSIFY_FRAGMENTED_SPINES(root_MAT_path, spines_correct_file,
-%   spines_partially_fragmented_file, spines_fragmented_file) Reads every
-%   spine under root_MAT_path and classifies it as:
-%   - Correct: Saved into a file in spines_correct_file path.
-%   - Partially fragmented: Saved into a file in
-%       spines_partially_fragmented_file path.
-%   - Fragmented: Saved into a file in spines_fragmented_file path.
+%   spines_partially_fragmented_file, spines_fragmented_file)
+%
+%   Parameters:
+%       - root_MAT_path character-vector : Path of the folder where spines
+%           that are going to be classified are saved.
+%       - spines_correct_file character-vector : Path of the text file
+%           where a list of paths of correct spines is going to be saved. 
+%       - spines_partially_fragmented_file character-vector : Path of the
+%           text file where a list of paths of partially fragmented spines
+%           is going to be saved.
+%       - spines_fragmented_file character-vector : Path of the text file
+%           where a list of paths of fragmented spines is going to be
+%           saved.
 %
 %Author: Luengo-Sanchez, S.
 %

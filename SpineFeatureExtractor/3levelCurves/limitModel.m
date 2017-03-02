@@ -1,19 +1,23 @@
-% Develop by Jesus Pérez updated by Sergio Luengo-Sanchez.
-% Get the raw model, the function values at each vertex and a limit value; 
-% then, those vertex such that its function value is above (or below) the 
-% limit are selected. In order to make each triangle belong to a single 
-% factor, new vertices are introduced in the model.
+function [newModel, newFuncVals] = limitModel(model, funcVals, limitValue)
+%LIMITMODEL Gets raw model, vertex function values and a limit value. 
+%Gets the raw model, the function values at each vertex and a limit value;
+%then, those vertex such that its function value is above (or below) the
+%limit are selected. In order to make each triangle belong tgo a single
+%factor, new vertices are introduced in the model.
 %
-% Parameters:
+%   [newModel, newFuncVals] = limitModel(model, funcVals, limitValue)
+%
+%   Input parameters:
 %       - model struct : The model to check the factorization.
 %       - funcVals [1xN] double : The function value at each vertex.
 %       - limitValue double : The function value limit.
 %
-% Returns:
+%   Output parameters
 %       - newModel struct : The new model with introduced vertices.
 %       - newFuncVals [1xN] double : The function value at each vertex.
 %
-function [newModel, newFuncVals] = limitModel(model, funcVals, limitValue)
+%Authors: Jesus Pérez, Sergio Luengo-Sanchez.
+
     % Get data
     faces = model.faces;
     vertices = model.vertices;

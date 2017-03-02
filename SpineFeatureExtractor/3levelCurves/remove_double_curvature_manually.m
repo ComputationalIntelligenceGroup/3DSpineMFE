@@ -1,17 +1,26 @@
-%Function to remove manually those spines that could present double
-%curvature problem. Spines are render one by one and user must select if
-%the spine has to be removed depending on the degree of separation between
-%the two curves. For each spine the program ask to the user if he wants to
-%continue (Press Enter) or if the spine must be deleted (Press D and then
-%Enter).
-
-
-%Input parameters:
-%    root_spines_neck_repaired_path: The path to the repaired spines are
-%    placed. Curves must be computed previously.
-%    threshold: A value that represents the distance between the two sets
-%    of points dictaminated by a hierarchical cluster. Default value is 2.
 function remove_double_curvature_manually(root_spines_neck_repaired_path,threshold)
+%REMOVE_DOUBLE_CURVATURE_MANUALLY Provides an interface to remove spines.
+%Renders those spines that could present double curvature problem one by
+%one and user must select if the spine has to be removed depending on the
+%degree of separation between the two curves. 
+%For each spine the program asks to the user if he wants to continue (Press
+%Enter) or if the spine must be deleted (Press D and then Enter).
+%
+%   REMOVE_DOUBLE_CURVATURE_MANUALLY(root_spines_neck_repaired_path,
+%   threshold)
+%
+%   Parameters:
+%       - root_spines_neck_repaired_path character-vector : The path where
+%           the repaired spines are placed. Curves must be computed
+%           previously.
+%       - threshold double : A value that represents the distance between
+%           the two sets of points dictaminated by a hierarchical cluster.
+%           Default value is 2.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also: DETECT_DOUBLE_CURVE
+
     if (nargin<2 & exist('root_spines_neck_repaired_path','var'))
         threshold=2;
     end

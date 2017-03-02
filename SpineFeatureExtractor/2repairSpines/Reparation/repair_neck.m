@@ -1,21 +1,26 @@
-% Spine grows until it is attached with the dendrite defined by the
-% insertion point
-%
-% Spine grows until it is attached with the dendrite defined by the
-% insertion point
-%
-% @author Luengo-Sanchez, S.
-%
-% @param root_spines_repaired_path path to the root folder where folders of each
-% dendrite containing the spines after the reparation of the fragmentation
-% @param root_insertion_points_path path to the folder where the VRMLs of the 
-% insertion points are placed 
-% @param root_spines_neck_repaired_path path to the folder where the spines
-% with the repaired neck should be saved
-%
-% @examples
-% See Main.m
 function repair_neck(root_spines_repaired_path, root_insertion_points_path, root_spines_neck_repaired_path)
+%REPAIR_NECK Repairs the neck of the spine.
+%Spine grows until it is attached with the dendrite defined by the
+%insertion point.
+%
+%   REPAIR_NECK(root_spines_repaired_path, root_insertion_points_path,
+%   root_spines_neck_repaired_path)
+%
+%   Parameters:
+%       - root_spines_repaired_path character-vector : Path of the folder
+%           that contains repaired fragmented spines that are going to be
+%           repaired their neck by making it grows until it is attached
+%           with the dendrite.
+%       - root_insertion_points_path character-vector : Path of the folder
+%           that contains VRML files with insertion points of each spine
+%           into the dendrite.
+%       - root_spines_neck_repaired_path character-vector : Path of the
+%           folder where spines with repaired neck will be saved.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also READ_INSERTION_POINTS
+
     %List dendrites and generated folders if it is needed
     listDendrites = dir(root_spines_repaired_path);
     for i = 3:length(listDendrites)

@@ -1,16 +1,20 @@
 function resize_shift_spine(root_spines_repaired_path, original_spine, smoothed_spine)
-%RESIZE_SHIFT_SPINE Resizes and shifts the spine to its original dimensions
-%an place.
+%RESIZE_SHIFT_SPINE Resizes and shifts the spine.
+%Resizes and shifts the spine to its original dimensions and place.
 %
 %   RESIZE_SHIFT_SPINE(root_spines_repaired_path, original_spine,
-%   smoothed_spine) smoothed_spine, which is a repaired and smoothed
-%   spine obtained from fragmentation reparation, will be resized to the
-%   original size (by means of resizing the new bounding box to the lengths
-%   of the original bounding box, and shifted to the original position. 
-%   Original size and position is obtained from original_spine, which is 
-%   the original spine object as it was read from the VRML file. Finally, 
-%   resized and shifted smoothed spine is saved in the path 
-%   root_spines_repaired_path.
+%   smoothed_spine)
+%
+%   Parameters:
+%       - root_spines_repaired_path character-vector : Path to the folder
+%           where resized and shifted smoothed spine is going to be saved.
+%       - original_spine struct : The original spine as it was read from
+%           the VRML file. Is used to obtain original size and position.
+%       - smoothed_spine struct : A repaired and smoothed spine obtained
+%           from fragmentation reparation. will be resized to the original
+%           size (by means of resizing the new bounding box to the lengths
+%           of the original bounding box and shifted to the original
+%           position.
 %
 %Author: Luengo-Sanchez, S.
 %

@@ -1,11 +1,18 @@
 function process_VRMLs(root_VRML_path, root_TIF_path, root_MAT_path)
-%PROCESS_VRMLS Processes VRMLs in a folder and yields MAT files
-%representing Spines.
+%PROCESS_VRMLS Processes VRMLs in a folder
+%And yields MAT files representing Spines.
 %
-%   PROCESS_VRMLS(root_VRML_path, root_TIF_path, root_MAT_path) processes
-%   all VRML files inside root_VRML_path. For this purpose, reading the
-%   metadata from TIF images inside root_TIF_path is needed. Output .mat
-%   files will be stored inside root_MAT_path.
+%   PROCESS_VRMLS(root_VRML_path, root_TIF_path, root_MAT_path) 
+%
+%   Parameters:
+%       - root_VRML_path character-vector : Path of the folder that
+%           contains all VRML files to be processed for creating spine .MAT
+%           files.
+%       - root_TIF_path character-vector : Path of the folder that contains
+%           the TIF images that corresponds to the VRML files for
+%           extracting the metadata needed.
+%       - root_MAT_path character-vector : Path where spine .MAT files are
+%           going to be saved.
 %
 %Author: Luengo-Sanchez, S.
 %

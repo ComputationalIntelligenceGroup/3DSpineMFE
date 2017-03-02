@@ -1,12 +1,15 @@
 function [physicalO, physicalL, stack, element_name] = metadata_extraction(filename)
 %METADATA_EXTRACTION Reads a TIF file and extracts metadata from it.
 %
-%   METADATA_EXTRACTION(tif_file_path) reads TIF file from tif_file_path 
-%   and extracts its metadata.
-%   Information about dimensions of the spines is saved as metadata in the 
-%   TIF file.
-%   All the images in the stack have the same metadata so any of them can
-%   be used.
+%   METADATA_EXTRACTION(tif_file_path) 
+%
+%   Parameters:
+%       - tif_file_path character-vector : Path of the TIF file for
+%           extracting its metadata. 
+%           Information about dimensions of the spines is saved as metadata
+%           in the TIF file.
+%           All the images in the stack have the same metadata, so any of
+%           them can be used.
 %
 %This function is needed for the Voxelization process.
 %Author: Luengo-Sanchez, S.

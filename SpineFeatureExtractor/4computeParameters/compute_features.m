@@ -1,7 +1,7 @@
 function compute_features(root_spines_neck_repaired_path,file_name)
-%COMPUTE_FEATURES Computes features for all repaired spines with level
-%curves inside a folder of dendrites. Then an XLS file with extracted
-%features is created.
+%COMPUTE_FEATURES Computes features.
+%Computes features for all repaired spines with level curves inside a 
+%folder of dendrites. Then an XLS file with extracted features is created.
 %
 %   COMPUTE_FEATURES(root_spines_neck_repaired_path, file_name)
 %

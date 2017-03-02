@@ -1,11 +1,16 @@
 function file_to_save = is_fragmented(data)	
 %IS_FRAGMENTED Checks level of fragmentation of the spine.
 %
-%   fragmentation = IS_FRAGMENTED(spine_object) given a Spine object, i.e.,
-%   vertices and faces, the fragmentation of that spine is returned:
-%   - fragmentation = 1, the spine is partially fragmented.
-%   - fragmentation = 2, the spine is fragmented.
-%   - fragmentation = 3, the spine is NOT fragmented.
+%   fragmentation = IS_FRAGMENTED(spine_object) 
+%
+%   Input parameters:
+%       - spine_object struct : A spine object, i.e., vertices and faces.
+%
+%   Output parameters:
+%       - fragmentation integer : The fragmentation level of the spine.
+%           * fragmentation = 1, the spine is partially fragmented.
+%           * fragmentation = 2, the spine is fragmented.
+%           * fragmentation = 3, the spine is NOT fragmented.
 %
 %Author: Luengo-Sanchez, S.
 %

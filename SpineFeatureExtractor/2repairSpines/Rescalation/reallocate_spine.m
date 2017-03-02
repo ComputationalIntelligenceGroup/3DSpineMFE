@@ -5,10 +5,12 @@ function reallocate_spine(root_spines_repaired_path)
 %the space. We need to recover their original position to make their neck
 %growth through the dendrite.
 %
-%   REALLOCATE_SPINE(root_spines_repaired_path) Given
-%   root_spines_repaired_path, which is the path that contains repaired
-%   spines for each dendrite, all spines are reallocated to their original
-%   position.
+%   REALLOCATE_SPINE(root_spines_repaired_path)
+%
+%   Parameters:
+%       - root_spines_repaired_path character-vector : Path that contains
+%           repaired spines for each dendrite. All spines are reallocated
+%           to their original position.
 %
 %Author: Luengo-Sanchez, S.
 %

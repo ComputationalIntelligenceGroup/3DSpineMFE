@@ -1,10 +1,16 @@
 function insertion_points=read_insertion_points(filename)
-%READ_INSERTION_POINTS reads an insertion points VRML file and creates a
-%cell array with all insertion points.
+%READ_INSERTION_POINTS Reads insertion points VRML file.
+%Reads an insertion points VRML file and creates a cell array with all 
+%insertion points.
 %
-%   insertion_points = READ_INSERTION_POINTS(filePath) given filePath which
-%   is a VRML file path containing data of insertion points, reads the
-%   points and creates a cell array with them.
+%   insertion_points = READ_INSERTION_POINTS(filepath)
+%
+%   Input parameters:
+%       - filepath character-vector : A path of a VRML file that contains
+%           data of insertion points.
+%
+%   Output parameters:
+%       - insertion_points cell-array : A cell array with insertion points.
 %
 %Author: Luengo-Sanchez, S.
 

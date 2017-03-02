@@ -1,15 +1,19 @@
 function compute_level_curves(root_spines_neck_repaired_path,number_of_ranges,remove,threshold)
-%COMPUTE_LEVEL_CURVES Computes level curves for all the spines under a root
-%folder.
+%COMPUTE_LEVEL_CURVES Computes level curves for multiple spines.
+%Computes level curves for all the spines under a root folder.
 %
 %   COMPUTE_LEVEL_CURVES(root_spines_neck_repaired_path, number_of_ranges,
-%   remove, threshold) Given root_spines_neck_repaired_path which is the
-%   folder where spines with repaired neck are stored, level curves will be
-%   computed for them. The number of computed level curves is defined by
-%   number_of_ranges. If remove is TRUE, those spines with double curve
-%   defect will be removed. Threshold is used to decide when double curve
-%   defect exists. The smaller the threshold value, the more the number of
-%   double curve defects detected.
+%   remove, threshold) 
+%
+%   Parameters:
+%       - root_spines_neck_repaired_path character-vector : Folder with
+%           where with repaired neck are stored.
+%       - number_of_ranges integer : Number of computed level curves.
+%       - remove boolean : If is TRUE, those spines with double curve
+%           defect will be removed.
+%       - threshold double : Used to decide when double curve defect
+%           exists. The smaller the threshold value, the more the number of
+%           double curve defects detected.
 %
 %Author: Luengo-Sanchez, S.
 %

@@ -1,8 +1,8 @@
 function [instance_row] = compute_spine_features(repaired_spine,insertion_point_idx,curve)
-%COMPUTE_SPINE_FEATURES Computes the features of the spine. Because of the
-%spine orientation dependency of some of the features, reorientation
-%operations are performed to make the spine look to the top and to the
-%right.
+%COMPUTE_SPINE_FEATURES Computes the features of the spine. 
+%Because of the spine orientation dependency of some of the features,
+%reorientation operations are performed to make the spine look to the top
+%and to the right.
 %
 %   [instance_row] = compute_spine_features(repaired_spine,
 %   insertion_point_idx, curve)

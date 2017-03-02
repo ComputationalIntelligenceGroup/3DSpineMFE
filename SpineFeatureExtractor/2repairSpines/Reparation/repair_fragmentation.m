@@ -1,17 +1,25 @@
 function repair_fragmentation(spines_partially_fragmented_file, spines_fragmented_file, spines_correct_file, root_spines_repaired_path, root_MAT_path)
-%REPAIR_FRAGMENTATION Repairs spines according to the level of
-%fragmentation of the spine. For repairing, dilation and erosion is used, 
-%depending the level of fragmentation, the size of the dilation mask
-%changes.
+%REPAIR_FRAGMENTATION Repairs spines.
+%According to the level of fragmentation of the spine. For repairing, 
+%dilation and erosion is used, depending the level of fragmentation, the 
+%size of the dilation mask changes.
 %
 %   REPAIR_FRAGMENTATION(spines_partially_fragmented_file,
 %   spines_fragmented_file, spines_correct_file, root_spines_repaired_path,
-%   root_MAT_path) Given three files with spine paths (divided into
-%   partially fragmented, fragmented, and correct), correct ones are copied
-%   directly to repaired spines folder (root_spines_repaired_path), and
-%   partially fragmented and fragmented are repaired and then copied to
-%   repaired spines folder. root_MAT_path is used to create path tree for
-%   repaired spines.
+%   root_MAT_path)
+%
+%   Parameters:
+%       - spines_partially_fragmented_file character-vector : Path of the
+%           text file that contains a list of paths of partially fragmented
+%           spines.
+%       - spines_fragmented_file character-vector : Path of the text file
+%           that contains a list of paths of fragmented spines.
+%       - spines_correct_file character-vector : Path of the text file
+%           that contains a list of paths of correct spines.
+%       - root_spines_repaired_path character-vector : Path to the folder
+%           where repaired spines are going to be saved.
+%       - root_MAT_path character-vector : Path to the folder that contains
+%           spine MAT files used to create a path tree for repaired spines.
 %
 %Author: Luengo-Sanchez, S.
 
