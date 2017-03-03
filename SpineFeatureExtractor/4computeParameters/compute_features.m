@@ -8,7 +8,7 @@ function compute_features(root_spines_neck_repaired_path,file_name)
 %   Parameters:
 %       -root_spines_neck_repaired_path character-vector : The folder where
 %           spines with repaired neck and level curves computed are stored.
-%       - file_name character-vector : The name of the XLS file where
+%       - file_name character-vector : The name of the CSV file where
 %           computed features are going to be saved.
 %
 %Author: Luengo-Sanchez, S.
@@ -16,9 +16,9 @@ function compute_features(root_spines_neck_repaired_path,file_name)
 %See also COMPUTE_SPINE_FEATURES
 
     [~,~,spine_ext]=fileparts(file_name);
-    if(~ strcmp(spine_ext,'.xls'))
-        warning('The extension of the file name does not correspond with an excel file, xls extension will be added');
-        file_name=strcat(file_name,'.xls');
+    if(~ strcmp(spine_ext,'.csv'))
+        warning('The extension of the file name does not correspond with a csv file, xls extension will be added');
+        file_name=strcat(file_name,'.csv');
     end
     list_dendrites = dir(root_spines_neck_repaired_path);
     list_spines = dir([root_spines_neck_repaired_path filesep list_dendrites(3).name]);
@@ -69,7 +69,11 @@ function compute_features(root_spines_neck_repaired_path,file_name)
     end
     
     my_data=[row_names',num2cell(table_rows)];
-    my_data=[header;my_data];
-    xlswrite(file_name,my_data)
+
+    fid = fopen(file_name, 'w') ;
+    fprintf(fid, '%s,', header{1,1:end-1}) ;
+    fprintf(fid, '%s\n', header{1,end}) ;
+    fclose(fid) ;
+    dlmcell(file_name,my_data,',','-a');
     
 end
