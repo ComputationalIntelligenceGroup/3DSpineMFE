@@ -166,6 +166,9 @@ classdef newsfe
             %           double curve defect will be removed automatically,
             %           otherwise user will be asked for removing spines
             %           which could present double curve defect.
+            %       - threshold double : Used to decide when double curve
+            %       	defect exists. The smaller the threshold value, the
+            %       	more the number of double curve defects detected.
             %
             %See also COMPUTE_LEVEL_CURVES,
             %REMOVE_DOUBLE_CURVATURE_MANUALLY
