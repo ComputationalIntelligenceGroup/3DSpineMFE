@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<toc version="2.0">
+    <tocitem target="3DSpineMS.html">3DSpineMS Toolbox
+        <tocitem target="doc_SpineFeatureExtractor.html">Spine Feature Extractor
+            <tocitem target="sfe/doc_GettingStarted.html">Getting Started</tocitem>
+            <tocitem target="sfe/doc_Walkthrough.html">Walkthrough</tocitem>
+            <!--
+            Uncomment this when adding Notes and FAQ.
+            <tocitem target="sfe/doc_Notes.html">Notes</tocitem>
+            <tocitem target="sfe/doc_Faq.html">F.A.Q.</tocitem>
+            -->
+        </tocitem>
+        <!--
+        Future spine clustering and spine simulator documentation links.
+        <tocitem target="doc_SpineClustering.html">Spine Clustering
+        </tocitem>
+        <tocitem target="doc_SpineSimulator.html">Spine Simulator
+        </tocitem>
+        -->
+        <tocitem target="https://github.com/ComputationalIntelligenceGroup/3DSpineMS">
+            3DSpineMS on Github
+        </tocitem>
+    </tocitem>    
+</toc>

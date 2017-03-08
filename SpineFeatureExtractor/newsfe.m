@@ -166,6 +166,9 @@ classdef newsfe
             %           double curve defect will be removed automatically,
             %           otherwise user will be asked for removing spines
             %           which could present double curve defect.
+            %       - threshold double : Used to decide when double curve
+            %       	defect exists. The smaller the threshold value, the
+            %       	more the number of double curve defects detected.
             %
             %See also COMPUTE_LEVEL_CURVES,
             %REMOVE_DOUBLE_CURVATURE_MANUALLY
@@ -201,8 +204,8 @@ classdef newsfe
             %
             %   Parameters:
             %       - root_neck_repaired character-vector : Path to the
-            %           folder with repaired spines used to compute their
-            %           features.
+            %           folder that contains repaired spines with computed
+            %           level curves used to compute their features.
             %       - output_csv_filename character-vector : The name of
             %           the output CSV file with all computed features.
             %           This parameter is optional, if not set, the output
@@ -223,8 +226,8 @@ classdef newsfe
             %curves and extracted their features.
             %
             %Usage:
-            %   sfe.runAll(root_TIF, root_VRML, root_ipoints, repair_neck,
-            %   num_curves, remove_auto, threshold, output_xls_filename)
+            %   sfe.runAll(root_TIF, root_VRML, root_ipoints, num_curves,
+            %   remove_auto, threshold, output_xls_filename)
             %
             %   Parameters:
             %       - root_TIF character-vector : Path to the dendrite TIF
