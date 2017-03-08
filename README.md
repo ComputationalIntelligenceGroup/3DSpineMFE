@@ -2,8 +2,6 @@
 
 A Matlab library for dendritic spine feature extraction, clustering and simulation.
 
-[TOC]
-
 ## Author
 
 - Luengo-Sanchez, S. <sluengo@fi.upm.es>
@@ -26,7 +24,7 @@ Once the library has been added to the path, its documentation can be browsed th
 
 ![3DSpineMS Matlab help](http://i.imgur.com/qLFhCpN.png)
 
-The library documentation can also be accessed through matlab command:
+The library documentation can also be accessed directly through matlab command:
 
 ```
 showdemo 3DSpineMS
