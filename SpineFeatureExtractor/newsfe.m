@@ -204,8 +204,8 @@ classdef newsfe
             %
             %   Parameters:
             %       - root_neck_repaired character-vector : Path to the
-            %           folder with repaired spines used to compute their
-            %           features.
+            %           folder that contains repaired spines with computed
+            %           level curves used to compute their features.
             %       - output_csv_filename character-vector : The name of
             %           the output CSV file with all computed features.
             %           This parameter is optional, if not set, the output
