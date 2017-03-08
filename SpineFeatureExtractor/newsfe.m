@@ -226,8 +226,8 @@ classdef newsfe
             %curves and extracted their features.
             %
             %Usage:
-            %   sfe.runAll(root_TIF, root_VRML, root_ipoints, repair_neck,
-            %   num_curves, remove_auto, threshold, output_xls_filename)
+            %   sfe.runAll(root_TIF, root_VRML, root_ipoints, num_curves,
+            %   remove_auto, threshold, output_xls_filename)
             %
             %   Parameters:
             %       - root_TIF character-vector : Path to the dendrite TIF
