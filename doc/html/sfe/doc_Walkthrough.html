@@ -1,0 +1,503 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Walkthrough</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-03-08"><meta name="DC.source" content="doc_Walkthrough.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Walkthrough</h1><!--introduction--><p>3DSpineMS SFE provides <tt>newsfe</tt> class which exposes up to five public functions for using the tool in different ways:</p><div><ul><li><b>processSpines</b> : Processes dendrites TIF and VRML files to obtain spines .MAT files.</li><li><b>repairSpines</b> : Repairs spines fragmentation and their neck.</li><li><b>computeLevelCurves</b> : Computes spines level curves.</li><li><b>extractFeatures</b> : Computes and extracts spines features.</li><li><b>runAll</b> : Runs all previous functions.</li></ul></div><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Creating a sfe instance</a></li><li><a href="#2">Processing spines (<tt>processSpines</tt>)</a></li><li><a href="#4">Repairing spines (<tt>repairSpines</tt>)</a></li><li><a href="#6">Computing level curves (<tt>computeLevelCurves</tt>)</a></li><li><a href="#9">Extracting features (<tt>extractFeatures</tt>)</a></li><li><a href="#12">Running all steps (<tt>runAll</tt>)</a></li></ul></div><h2 id="1">Creating a sfe instance</h2><p>To start using the tool, creating a new <tt>sfe</tt> is needed. The <tt>newsfe</tt> constructor expects one parameter:</p><div><ul><li><b>OutputPath</b> : The absolute path to the folder where output files will be saved. For example: <tt>C:/3DSpineMS/sfe/data</tt></li></ul></div><p><i>Usage:</i></p><pre class="codeinput">sfe = newsfe(<span class="string">'C:/3DSpineMS/sfe/data'</span>);
+</pre><h2 id="2">Processing spines (<tt>processSpines</tt>)</h2><p>The first step that can be performed with this tool, is to process the spines, which means to convert TIF and VRML dendrite source files to spine matlab matrices (.MAT files).</p><p><img vspace="5" hspace="5" src="img/processSpines.png" alt=""> </p><p>This function needs the following input parameters:</p><div><ul><li><b>root_TIF</b> : Path to the dendrite TIF files, can be a compressed .ZIP file or a folder. For example: <tt>C:/3DSpineMS/sfe/sources/root_TIFs.zip</tt></li><li><b>root_VRML</b> : Path to the dendrite VRML files, can be a compressed .ZIP file or a folder. For example: <tt>C:/3DSpineMS/sfe/sources/root_VRMLs.zip</tt></li></ul></div><p><i>Usage:</i></p><pre class="codeinput">root_TIF = <span class="string">'C:/3DSpineMS/sfe/sources/root_TIFs.zip'</span>;
+root_VRML = <span class="string">'C:/3DSpineMS/sfe/sources/root_VRMLs.zip'</span>;
+sfe.processSpines(root_TIF, root_VRML);
+</pre><p>Resulting .MAT files will be saved into a folder called <tt>SPINE_MAT</tt> located inside output folder configured when <tt>sfe</tt> instance was created.</p><p><b>Note:</b> If .ZIP files are choosed as inputs, their contents will be decompressed into the folders called <tt>DENDRITE_TIF</tt> and <tt>DENDRITE_VRML</tt> inside output folder configured when <tt>sfe</tt> instance was created.</p><h2 id="4">Repairing spines (<tt>repairSpines</tt>)</h2><p>This step is for repairing spines fragmentation and also their neck. A spine is fragmented when the VRML 3D model contains more than one part. Reparation process is to try to merge all parts into one.</p><p>There are three fragmentation levels:</p><div><ul><li>Correct.</li><li>Partially fragmented.</li><li>Fragmented.</li></ul></div><p><img vspace="5" hspace="5" src="img/repairFragmentation.png" alt=""> </p><p>This function needs the following input parameters:</p><div><ul><li><b>root_MAT</b> : Path to the spines .MAT files, can be a .ZIP file or a folder. For example: <tt>C:/3DSpineMS/sfe/data/SPINE_MAT</tt>, (output of processSpines which is commonly used before repairSpines).</li><li><b>root_ipoints</b> : Path to the dendrite insertion points VRML files, can be a .ZIP file or a folder. For example: <tt>C:/3DSpineMS/sfe/sources/root_insertion_points.zip</tt>.</li></ul></div><p><i>Usage:</i></p><pre class="codeinput">root_MAT = <span class="string">'C:/3DSpineMS/sfe/data/SPINE_MAT'</span>;
+root_ipoints = <span class="string">'C:/3DSpineMS/sfe/sources/root_insertion_points.zip'</span>;
+sfe.repairSpines(root_MAT, root_ipoints);
+</pre><p>Reparation process will generate three files in the output folder containing the paths of the spines depending their fragmentation level. Filenames are as follows:</p><div><ul><li><tt>CORRECT_SPINES_PATHS.txt</tt> for correct ones.</li><li><tt>PARTIALLY_FRAGMENTED_SPINES_PATHS.txt</tt> for partially fragmented ones.</li><li><tt>FRAGMENTED_SPINES_PATHS.txt</tt> for fragmented ones.</li></ul></div><p>Repaired spines will be saved in the output folder into a folder called <tt>SPINE_REPAIRED</tt>.</p><p>This process also performs spine neck reparation which is to rebuild the neck of those spines which do not appear to be attached to the dendrite. Spines with repaired neck will be saved in the output folder into a folder called <tt>SPINE_NECK_REPAIRED</tt>.</p><h2 id="6">Computing level curves (<tt>computeLevelCurves</tt>)</h2><p>This step is for computing spine level curves. The spine level curves help to define the morphology of the spine. This curves are useful for extracting spine features and also for being able to rebuild the spine and simulate new ones.</p><p>Those spines which are considered bad (double curve defect) can be removed automatically or manually. If manual removing is choosed, the user will be asked for the correctness of the spine which is currently rendered.</p><div><ul><li>If the spine is correct, the user must press <b>Enter</b>.</li><li>If the spine is bad, the user must press <b>D</b> (delete) and then <b>Enter</b>. This will remove the spine from the folder to avoid a future feature extraction.</li></ul></div><p><img vspace="5" hspace="5" src="img/computeLevelCurves.png" alt=""> </p><p>This function needs the following input parameters:</p><div><ul><li><b>root_neck_repaired</b> :  Path to the folder with repaired spines used to calculate their level curves. For example: <tt>C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED</tt>, (output of repairSpines which is commonly used before computeLevelCurves).</li><li><b>num_curves</b> : Number of computed level curves. For example: <tt>8</tt>.</li><li><b>remove_auto</b> : If is TRUE, those spines with double curve defect will be removed automatically, otherwise user will be asked for removing spines which could present double curve defect. For example: true.</li><li><b>threshold</b> : Used to decide when double curve defect exists. The smaller the threshold value, the more the number of double curve defects detected. For example: <tt>2</tt>.</li></ul></div><p><i>Usage:</i></p><pre class="codeinput">root_neck_repaired = <span class="string">'C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED'</span>;
+num_curves = 8;
+remove_auto = true;
+threshold = 2;
+sfe.computeLevelCurves(root_neck_repaired, num_curves, remove_auto, threshold);
+</pre><p><i>Or, if we want check spines with possible double curve defect and remove them manually:</i></p><pre class="codeinput">root_neck_repaired = <span class="string">'C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED'</span>;
+num_curves = 8;
+remove_auto = false;
+threshold = 2;
+sfe.computeLevelCurves(root_neck_repaired, num_curves, remove_auto, threshold);
+</pre><p>After computing level curves, .MAT files inside <tt>root_neck_repaired</tt> folder will be updated including a cell array with the curves data.</p><h2 id="9">Extracting features (<tt>extractFeatures</tt>)</h2><p>Feature extraction is the main step of this tool. Given repaired spines with computed level curves, a feature set for each spine can be extracted. Computed features are as follows:</p><p>
+  <ul>
+      <li><strong>Height</strong> (<em>h_{i}</em>): This variable
+          measures the length of the vector h_{i} between the centroids
+          of two consecutive ellipses. The higher the value of this
+          variable, the longer the spine in that region.</li>
+      <li><strong>Major axis of ellipse</strong> (<em>B_R_{i}</em>):
+          It is the length of the major axis of the ellipse. Low values
+          denote that spine is thin around B_R_{i}.</li>
+      <li><strong>Minor axis of ellipse</strong> (<em>B_r_{i}</em>):
+          It is the length of the minor axis of the ellipse. It gives
+          information about the squishiness of the spine when it is
+          compared with B_R_{i}. If B_R_{i} and B_r_{i} have similar
+          values the ellipse is in fact a circle while B_r_{i} gets
+          smaller the ellipse becomes more squished.</li>
+      <li><strong>Ratio between sections</strong>
+          (<em>&phi;_{i}_{j}</em>): It is the ratio between the area of
+          the ellipses i and j. If it is higher than 1 it means that
+          ellipse j is bigger than ellipse i . When values are between 0
+          and 1 it means that ellipse i is bigger than ellipse j . It
+          can be interpreted as the widening or narrowing along the
+          spine. We compare bottom (i=2) with middle (j=4) and top (j=4)
+          and middle (i=4) with top (j=6) so 3 variables were computed.
+          </li>
+      <li><strong>Growing direction of the spine</strong>: The vector
+          between ellipses h_{i} defines a direction which can be
+          expressed in spherical coordinates, i.e., an azimuth angle phi
+          and an elevation angle theta.</li>
+      <ul>
+          <li><em>cos( &Phi;_{i})</em>: Cosine of the azimuth or azimuthal
+              angle, obtained as the angle between two vectors. The
+              first vector is defined by connecting the centroids of the
+              ellipses separating the i -th and (i-1) -th regions. The
+              second vector is determined by the centroids connecting
+              the ellipses separating the (i+1) -th and i -th regions.
+              It measures the tortuosity of the spine.</li>
+          <li><em>&theta;_{i}</em>: The polar angle, also called
+              colatitude in the spherical coordinate system. It is just
+              needed for simulation.</li>
+      </ul>
+      <li><strong>Instant direction</strong>: It is the direction of the
+          perpendicular vector to ellipse B_i. Meanwhile “growing
+          direction” is the mean direction of a region, this quantity is
+          the direction of the spine for a concretely value of the
+          geodesic distance. From a mathematical point of view, “growing
+          direction” can be understood as the slope of a function and
+          “instant direction” as the derivate. To compute this vector the
+          ellipse is rotated to the plane XY according to principal
+          component analysis. Then, from <em>B_R_{i} x B_r_{i}</em> the
+          vector is obtained. It is expressed in spherical coordinates.
+          </li>
+      <ul>
+          <li><em>&Theta;_{i}</em>: The polar angle or colatitude in
+              spherical coordinate system. It is the inclination of the
+              vector perpendicular to the ellipse with respect to Z axis.
+              If it is 0 then the spine grows horizontally at that point.
+              When it is &Pi;/2, it means that the spine grows
+              completely vertical at that point. It is just needed for
+              simulation.</li>
+          <li><em>&Phi;_{i}</em>: The azimuth or azimuthal angle. It
+              indicates if the spine is growing to the right, left,
+              forward or backward as it was previously explained for the
+              growing direction but in this case it is computed for the
+              perpendicular vector to the ellipse. It is just needed for
+              simulation.</li>
+      </ul>
+      <li><strong>Volume</strong> (<em>V</em>): It is the total volume
+          of the spine.</li>
+      <li><strong>Volume of each region</strong> (<em>V_{i}</em>): It is
+          an approximation of the volume between two consecutive
+          ellipses. It is computed from the convex hull of T_{i} and
+          B_{i}.</li>
+  </ul>
+</p><p><img vspace="5" hspace="5" src="img/spineFeatures.png" alt=""> </p><p>This function needs the following input parameters:</p><div><ul><li><b>root_neck_repaired</b> : Path to the folder that contains repaired spines with computed level curves used to compute their features. For example: <tt>C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED</tt>, (output of computeLevelCurves which is commonly used before extractFeatures).</li><li><b>output_csv_filename</b> : The name of the output CSV file with all computed features. This parameter is optional, if not set, the output file name will be <tt>EXTRACTED_FEATURES.csv</tt>.</li></ul></div><p><i>Usage:</i></p><pre class="codeinput">root_neck_repaired = <span class="string">'C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED'</span>;
+sfe.extractFeatures(root_neck_repaired);
+</pre><p><i>Or, if we want to set a custom output file name:</i></p><pre class="codeinput">root_neck_repaired = <span class="string">'C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED'</span>;
+output_csv_filename = <span class="string">'CUSTOM_NAME.csv'</span>;
+sfe.extractFeatures(root_neck_repaired, output_csv_filename);
+</pre><p>Resulting .CSV file with computed features will be saved in the root of the output folder configured when <tt>sfe</tt> instance was created.</p><h2 id="12">Running all steps (<tt>runAll</tt>)</h2><p>This function runs secuentially all steps described previously. So spines will be processed, repaired, computed their level curves and extracted their features.</p><p>The following parameters are needed:</p><div><ul><li><b>root_TIF</b> : Path to the dendrite TIF files, can be a compressed .ZIP file or a folder. For example: <tt>C:/3DSpineMS/sfe/sources/root_TIFs.zip</tt></li><li><b>root_VRML</b> : Path to the dendrite VRML files, can be a compressed .ZIP file or a folder. For example: <tt>C:/3DSpineMS/sfe/sources/root_VRMLs.zip</tt></li><li><b>root_ipoints</b> : Path to the dendrite insertion points VRML files, can be a .ZIP file or a folder. For example: <tt>C:/3DSpineMS/sfe/sources/root_insertion_points.zip</tt>.</li><li><b>num_curves</b> : Number of computed level curves. For example: <tt>8</tt>.</li><li><b>remove_auto</b> : If is TRUE, those spines with double curve defect will be removed automatically, otherwise user will be asked for removing spines which could present double curve defect. For example: <tt>true</tt>.</li><li><b>threshold</b> : Used to decide when double curve defect exists. The smaller the threshold value, the more the number of double curve defects detected. For example: <tt>2</tt>.</li><li><b>output_csv_filename</b> : The name of the output CSV file with all computed features. This parameter is optional, if not set, the output file name will be <tt>EXTRACTED_FEATURES.csv</tt>.</li></ul></div><p><i>Usage:</i></p><pre class="codeinput">root_TIF = <span class="string">'C:/3DSpineMS/sfe/sources/root_TIFs.zip'</span>;
+root_VRML = <span class="string">'C:/3DSpineMS/sfe/sources/root_VRMLs.zip'</span>;
+root_ipoints = <span class="string">'C:/3DSpineMS/sfe/sources/root_insertion_points.zip'</span>;
+num_curves = 8;
+remove_auto = true;
+threshold = 2;
+sfe.runAll(root_TIF, root_VRML, root_ipoints, num_curves, remove_auto, threshold);
+</pre><p><i>Or, if we want check spines with possible double curve defect and remove them manually:</i></p><pre class="codeinput">root_TIF = <span class="string">'C:/3DSpineMS/sfe/sources/root_TIFs.zip'</span>;
+root_VRML = <span class="string">'C:/3DSpineMS/sfe/sources/root_VRMLs.zip'</span>;
+root_ipoints = <span class="string">'C:/3DSpineMS/sfe/sources/root_insertion_points.zip'</span>;
+num_curves = 8;
+remove_auto = false;
+threshold = 2;
+sfe.runAll(root_TIF, root_VRML, root_ipoints, num_curves, remove_auto, threshold);
+</pre><p><i>Or, if we want to set a custom output file name:</i></p><pre class="codeinput">root_TIF = <span class="string">'C:/3DSpineMS/sfe/sources/root_TIFs.zip'</span>;
+root_VRML = <span class="string">'C:/3DSpineMS/sfe/sources/root_VRMLs.zip'</span>;
+root_ipoints = <span class="string">'C:/3DSpineMS/sfe/sources/root_insertion_points.zip'</span>;
+num_curves = 8;
+remove_auto = true;
+threshold = 2;
+output_csv_filename = <span class="string">'CUSTOM_NAME.csv'</span>;
+sfe.runAll(root_TIF, root_VRML, root_ipoints, num_curves, remove_auto, threshold, output_csv_filename);
+</pre><p>Executing this function will generate all outputs of previously described steps.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Walkthrough
+% 3DSpineMS SFE provides |newsfe| class which exposes up to five public
+% functions for using the tool in different ways:
+%
+% * *processSpines* : Processes dendrites TIF and VRML files to obtain
+% spines .MAT files.
+% * *repairSpines* : Repairs spines fragmentation and their neck.
+% * *computeLevelCurves* : Computes spines level curves.
+% * *extractFeatures* : Computes and extracts spines features.
+% * *runAll* : Runs all previous functions.
+%
+%% Creating a sfe instance
+%
+% To start using the tool, creating a new |sfe| is needed. The |newsfe|
+% constructor expects one parameter:
+%
+% * *OutputPath* : The absolute path to the folder where output files will
+% be saved. For example: |C:/3DSpineMS/sfe/data|
+%
+% _Usage:_
+sfe = newsfe('C:/3DSpineMS/sfe/data');
+%% Processing spines (|processSpines|)
+%
+% The first step that can be performed with this tool, is to process the
+% spines, which means to convert TIF and VRML dendrite source files to
+% spine matlab matrices (.MAT files).
+%
+% <<img/processSpines.png>>
+% 
+% This function needs the following input parameters:
+%
+% * *root_TIF* : Path to the dendrite TIF files, can be a compressed .ZIP
+% file or a folder. For example: |C:/3DSpineMS/sfe/sources/root_TIFs.zip|
+% * *root_VRML* : Path to the dendrite VRML files, can be a compressed .ZIP
+% file or a folder. For example: |C:/3DSpineMS/sfe/sources/root_VRMLs.zip|
+%
+% _Usage:_
+root_TIF = 'C:/3DSpineMS/sfe/sources/root_TIFs.zip';
+root_VRML = 'C:/3DSpineMS/sfe/sources/root_VRMLs.zip';
+sfe.processSpines(root_TIF, root_VRML);
+%%
+% Resulting .MAT files will be saved into a folder called |SPINE_MAT| 
+% located inside output folder configured when |sfe| instance was created.
+%
+% *Note:* If .ZIP files are choosed as inputs, their contents will be
+% decompressed into the folders called |DENDRITE_TIF| and |DENDRITE_VRML|
+% inside output folder configured when |sfe| instance was created.
+%
+%% Repairing spines (|repairSpines|)
+%
+% This step is for repairing spines fragmentation and also their neck.
+% A spine is fragmented when the VRML 3D model contains more than one part.
+% Reparation process is to try to merge all parts into one.
+% 
+% There are three fragmentation levels:
+%
+% * Correct.
+% * Partially fragmented.
+% * Fragmented.
+%
+% <<img/repairFragmentation.png>>
+%
+% This function needs the following input parameters:
+%
+% * *root_MAT* : Path to the spines .MAT files, can be a .ZIP file or a
+% folder. For example: |C:/3DSpineMS/sfe/data/SPINE_MAT|, (output of 
+% processSpines which is commonly used before repairSpines).
+% * *root_ipoints* : Path to the dendrite insertion points VRML files, can
+% be a .ZIP file or a folder. For example:
+% |C:/3DSpineMS/sfe/sources/root_insertion_points.zip|.
+%
+% _Usage:_
+%
+root_MAT = 'C:/3DSpineMS/sfe/data/SPINE_MAT';
+root_ipoints = 'C:/3DSpineMS/sfe/sources/root_insertion_points.zip';
+sfe.repairSpines(root_MAT, root_ipoints);
+%%
+% Reparation process will generate three files in the output folder
+% containing the paths of the spines depending their fragmentation level.
+% Filenames are as follows:
+%
+% * |CORRECT_SPINES_PATHS.txt| for correct ones.
+% * |PARTIALLY_FRAGMENTED_SPINES_PATHS.txt| for partially fragmented ones.
+% * |FRAGMENTED_SPINES_PATHS.txt| for fragmented ones.
+%
+% Repaired spines will be saved in the output folder into a folder called 
+% |SPINE_REPAIRED|.
+% 
+% This process also performs spine neck reparation which is to rebuild the
+% neck of those spines which do not appear to be attached to the dendrite.
+% Spines with repaired neck will be saved in the output folder into a
+% folder called |SPINE_NECK_REPAIRED|.
+%
+%% Computing level curves (|computeLevelCurves|)
+%
+% This step is for computing spine level curves. The spine level curves
+% help to define the morphology of the spine. This curves are useful for
+% extracting spine features and also for being able to rebuild the spine
+% and simulate new ones.
+% 
+% Those spines which are considered bad (double curve defect) can be
+% removed automatically or manually. If manual removing is choosed, the
+% user will be asked for the correctness of the spine which is currently
+% rendered.
+%
+% * If the spine is correct, the user must press *Enter*.
+% * If the spine is bad, the user must press *D* (delete) and then *Enter*.
+% This will remove the spine from the folder to avoid a future feature
+% extraction.
+%
+% <<img/computeLevelCurves.png>> 
+%
+% This function needs the following input parameters:
+%
+% * *root_neck_repaired* :  Path to the folder with repaired spines used to
+% calculate their level curves. For example: 
+% |C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED|, (output of repairSpines 
+% which is commonly used before computeLevelCurves).
+% * *num_curves* : Number of computed level curves. For example: |8|.
+% * *remove_auto* : If is TRUE, those spines with double curve defect will 
+% be removed automatically, otherwise user will be asked for removing 
+% spines which could present double curve defect. For example: true.
+% * *threshold* : Used to decide when double curve defect exists. The 
+% smaller the threshold value, the more the number of double curve defects 
+% detected. For example: |2|.
+%
+% _Usage:_
+%
+root_neck_repaired = 'C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED';
+num_curves = 8;
+remove_auto = true;
+threshold = 2;
+sfe.computeLevelCurves(root_neck_repaired, num_curves, remove_auto, threshold);
+%%
+% _Or, if we want check spines with possible double curve defect and remove
+% them manually:_
+%
+root_neck_repaired = 'C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED';
+num_curves = 8;
+remove_auto = false;
+threshold = 2;
+sfe.computeLevelCurves(root_neck_repaired, num_curves, remove_auto, threshold);
+%%
+% After computing level curves, .MAT files inside |root_neck_repaired|
+% folder will be updated including a cell array with the curves data.
+%
+%% Extracting features (|extractFeatures|)
+%
+% Feature extraction is the main step of this tool. Given repaired spines
+% with computed level curves, a feature set for each spine can be
+% extracted. Computed features are as follows:
+%
+% <html>
+%   <ul>
+%       <li><strong>Height</strong> (<em>h_{i}</em>): This variable 
+%           measures the length of the vector h_{i} between the centroids 
+%           of two consecutive ellipses. The higher the value of this 
+%           variable, the longer the spine in that region.</li>
+%       <li><strong>Major axis of ellipse</strong> (<em>B_R_{i}</em>):
+%           It is the length of the major axis of the ellipse. Low values 
+%           denote that spine is thin around B_R_{i}.</li>
+%       <li><strong>Minor axis of ellipse</strong> (<em>B_r_{i}</em>):
+%           It is the length of the minor axis of the ellipse. It gives 
+%           information about the squishiness of the spine when it is 
+%           compared with B_R_{i}. If B_R_{i} and B_r_{i} have similar 
+%           values the ellipse is in fact a circle while B_r_{i} gets 
+%           smaller the ellipse becomes more squished.</li>
+%       <li><strong>Ratio between sections</strong> 
+%           (<em>&phi;_{i}_{j}</em>): It is the ratio between the area of 
+%           the ellipses i and j. If it is higher than 1 it means that 
+%           ellipse j is bigger than ellipse i . When values are between 0 
+%           and 1 it means that ellipse i is bigger than ellipse j . It 
+%           can be interpreted as the widening or narrowing along the 
+%           spine. We compare bottom (i=2) with middle (j=4) and top (j=4) 
+%           and middle (i=4) with top (j=6) so 3 variables were computed.
+%           </li>
+%       <li><strong>Growing direction of the spine</strong>: The vector 
+%           between ellipses h_{i} defines a direction which can be 
+%           expressed in spherical coordinates, i.e., an azimuth angle phi 
+%           and an elevation angle theta.</li>
+%       <ul>
+%           <li><em>cos( &Phi;_{i})</em>: Cosine of the azimuth or azimuthal 
+%               angle, obtained as the angle between two vectors. The 
+%               first vector is defined by connecting the centroids of the 
+%               ellipses separating the i -th and (i-1) -th regions. The 
+%               second vector is determined by the centroids connecting 
+%               the ellipses separating the (i+1) -th and i -th regions. 
+%               It measures the tortuosity of the spine.</li>
+%           <li><em>&theta;_{i}</em>: The polar angle, also called 
+%               colatitude in the spherical coordinate system. It is just 
+%               needed for simulation.</li>
+%       </ul>
+%       <li><strong>Instant direction</strong>: It is the direction of the 
+%           perpendicular vector to ellipse B_i. Meanwhile “growing 
+%           direction” is the mean direction of a region, this quantity is 
+%           the direction of the spine for a concretely value of the 
+%           geodesic distance. From a mathematical point of view, “growing 
+%           direction” can be understood as the slope of a function and 
+%           “instant direction” as the derivate. To compute this vector the 
+%           ellipse is rotated to the plane XY according to principal 
+%           component analysis. Then, from <em>B_R_{i} x B_r_{i}</em> the 
+%           vector is obtained. It is expressed in spherical coordinates.
+%           </li>
+%       <ul>
+%           <li><em>&Theta;_{i}</em>: The polar angle or colatitude in 
+%               spherical coordinate system. It is the inclination of the 
+%               vector perpendicular to the ellipse with respect to Z axis.
+%               If it is 0 then the spine grows horizontally at that point.
+%               When it is &Pi;/2, it means that the spine grows 
+%               completely vertical at that point. It is just needed for 
+%               simulation.</li>
+%           <li><em>&Phi;_{i}</em>: The azimuth or azimuthal angle. It 
+%               indicates if the spine is growing to the right, left, 
+%               forward or backward as it was previously explained for the 
+%               growing direction but in this case it is computed for the 
+%               perpendicular vector to the ellipse. It is just needed for 
+%               simulation.</li>
+%       </ul>
+%       <li><strong>Volume</strong> (<em>V</em>): It is the total volume 
+%           of the spine.</li>
+%       <li><strong>Volume of each region</strong> (<em>V_{i}</em>): It is 
+%           an approximation of the volume between two consecutive 
+%           ellipses. It is computed from the convex hull of T_{i} and 
+%           B_{i}.</li>
+%   </ul>
+% </html>
+%
+% <<img/spineFeatures.png>>
+%
+% This function needs the following input parameters:
+% 
+% * *root_neck_repaired* : Path to the folder that contains repaired spines
+% with computed level curves used to compute their features. For example: 
+% |C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED|, (output of
+% computeLevelCurves which is commonly used before extractFeatures).
+% * *output_csv_filename* : The name of the output CSV file with all 
+% computed features. This parameter is optional, if not set, the output 
+% file name will be |EXTRACTED_FEATURES.csv|.
+%
+% _Usage:_
+%
+root_neck_repaired = 'C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED';
+sfe.extractFeatures(root_neck_repaired);
+%%
+% _Or, if we want to set a custom output file name:_
+%
+root_neck_repaired = 'C:/3DSpineMS/sfe/data/SPINE_NECK_REPAIRED';
+output_csv_filename = 'CUSTOM_NAME.csv';
+sfe.extractFeatures(root_neck_repaired, output_csv_filename);
+%%
+% Resulting .CSV file with computed features will be saved in the root of
+% the output folder configured when |sfe| instance was created.
+%
+%% Running all steps (|runAll|)
+%
+% This function runs secuentially all steps described previously. So spines
+% will be processed, repaired, computed their level curves and extracted 
+% their features.
+%
+% The following parameters are needed:
+%
+% * *root_TIF* : Path to the dendrite TIF files, can be a compressed .ZIP
+% file or a folder. For example: |C:/3DSpineMS/sfe/sources/root_TIFs.zip|
+% * *root_VRML* : Path to the dendrite VRML files, can be a compressed .ZIP
+% file or a folder. For example: |C:/3DSpineMS/sfe/sources/root_VRMLs.zip|
+% * *root_ipoints* : Path to the dendrite insertion points VRML files, can
+% be a .ZIP file or a folder. For example:
+% |C:/3DSpineMS/sfe/sources/root_insertion_points.zip|.
+% * *num_curves* : Number of computed level curves. For example: |8|.
+% * *remove_auto* : If is TRUE, those spines with double curve defect will 
+% be removed automatically, otherwise user will be asked for removing 
+% spines which could present double curve defect. For example: |true|.
+% * *threshold* : Used to decide when double curve defect exists. The 
+% smaller the threshold value, the more the number of double curve defects 
+% detected. For example: |2|.
+% * *output_csv_filename* : The name of the output CSV file with all 
+% computed features. This parameter is optional, if not set, the output 
+% file name will be |EXTRACTED_FEATURES.csv|. 
+%
+% _Usage:_
+%
+root_TIF = 'C:/3DSpineMS/sfe/sources/root_TIFs.zip';
+root_VRML = 'C:/3DSpineMS/sfe/sources/root_VRMLs.zip';
+root_ipoints = 'C:/3DSpineMS/sfe/sources/root_insertion_points.zip';
+num_curves = 8;
+remove_auto = true;
+threshold = 2;
+sfe.runAll(root_TIF, root_VRML, root_ipoints, num_curves, remove_auto, threshold);
+%%
+% _Or, if we want check spines with possible double curve defect and remove
+% them manually:_
+%
+root_TIF = 'C:/3DSpineMS/sfe/sources/root_TIFs.zip';
+root_VRML = 'C:/3DSpineMS/sfe/sources/root_VRMLs.zip';
+root_ipoints = 'C:/3DSpineMS/sfe/sources/root_insertion_points.zip';
+num_curves = 8;
+remove_auto = false;
+threshold = 2;
+sfe.runAll(root_TIF, root_VRML, root_ipoints, num_curves, remove_auto, threshold);
+%%
+% _Or, if we want to set a custom output file name:_
+%
+root_TIF = 'C:/3DSpineMS/sfe/sources/root_TIFs.zip';
+root_VRML = 'C:/3DSpineMS/sfe/sources/root_VRMLs.zip';
+root_ipoints = 'C:/3DSpineMS/sfe/sources/root_insertion_points.zip';
+num_curves = 8;
+remove_auto = true;
+threshold = 2;
+output_csv_filename = 'CUSTOM_NAME.csv';
+sfe.runAll(root_TIF, root_VRML, root_ipoints, num_curves, remove_auto, threshold, output_csv_filename);
+%%
+% Executing this function will generate all outputs of previously described
+% steps.
+%
+##### SOURCE END #####
+--></body></html>
