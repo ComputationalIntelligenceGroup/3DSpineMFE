@@ -1,33 +1,53 @@
-# 3DSpineMS
+# 3DSpineMFE
 
-A Matlab library for dendritic spine feature extraction, clustering and simulation.
+A MATLAB&reg; toolbox that given a three-dimensional spine reconstruction computes a set of characteristic morphological measures that unequivocally determine the spine shape.
 
 ## Author
 
 - Luengo-Sanchez, S. <sluengo@fi.upm.es>
 
-## Installation
+## Getting Started
 
-3DSpineMS is built in Matlab&reg;. It requires Matlab 8.4 (R2014b) or superior.
+3DSpineMFE is built in Matlab&reg;. It requires Matlab 8.4 (R2014b) or superior.
 
-The library installation consists in decompressing or copying library folder (3DSpineMS) to any place, for example: `C:/matlab/mylibraries/3DSpineMS`
+### Dependencies
 
-Adding that folder and subfolders to Matlab path is useful for using the tools provided and their documentation. This can be done with matlab built-in functions `addpath` and `genpath`. For example:
+3DSpineMFE uses the following software dependencies, all of them are bundled as libraries in the package.
 
-```
-addpath(genpath('C:/matlab/mylibraries/3DSpineMS'));
-```
+| Library | License | Bundled |
+|---------|---------|---------|
+| [Geom3D](https://es.mathworks.com/matlabcentral/fileexchange/24484-geom3d) | BSD | Yes |
+| [Smooth Triangulated Mesh](https://es.mathworks.com/matlabcentral/fileexchange/26710-smooth-triangulated-mesh) | BSD | Yes |
+| [Toolbox Fast Marching](https://es.mathworks.com/matlabcentral/fileexchange/6110-toolbox-fast-marching) | BSD | Yes |
+| [Conversion of Conics Parameters](https://es.mathworks.com/matlabcentral/fileexchange/32105-conversion-of-conics-parameters) | BSD | Yes |
+| [Write Cell Array to Text File](https://es.mathworks.com/matlabcentral/fileexchange/25387-write-cell-array-to-text-file) | BSD | Yes |
+| [Ellipse Fit (Direct method)](https://es.mathworks.com/matlabcentral/fileexchange/22684-ellipse-fit--direct-method-) | BSD | Yes |
+| [SplitFV](https://es.mathworks.com/matlabcentral/fileexchange/27667-splitfv-split-a-mesh) | BSD | Yes |
+| [Unify Mesh Normals](https://es.mathworks.com/matlabcentral/fileexchange/43013-unifymeshnormals) | BSD | Yes |
+| [Mesh Voxelisation](https://es.mathworks.com/matlabcentral/fileexchange/27390-mesh-voxelisation) | BSD | Yes |
 
-### Using library matlab documentation
+### Installation
 
-Once the library has been added to the path, its documentation can be browsed through `doc` command. This will open the homepage of Matlab help where many shortcuts of different installed toolboxes are shown. This library is recognised by Matlab as Supplemental Software and its documentation can be accesed through the 3DSpineMS Toolbox link inside Supplemental Software box.
+This toolbox is packaged as a MATLAB(R) app, which means that an application installer is provided.
 
-![3DSpineMS Matlab help](http://i.imgur.com/qLFhCpN.png)
+When executing the installer, user will be asked to confirm the installation:
+
+![3DSpineMFE Matlab help](http://i.imgur.com/3nrm4Bj.png)
+
+After the installation, toolbox will be visible under Matlab Apps tab:
+
+![3DSpineMFE Matlab help](http://i.imgur.com/eJ8LYHt.png)
+
+### Using toolbox matlab documentation
+
+Once the toolbox has been installed, its documentation can be browsed through `doc` command. This will open the homepage of Matlab help where many shortcuts of different installed toolboxes are shown. This toolbox is recognised by Matlab as Supplemental Software and its documentation can be accesed through the 3DSpineMFE Toolbox link inside Supplemental Software box.
+
+![3DSpineMFE Matlab help](http://i.imgur.com/ARL1Lsa.png)
 
 The library documentation can also be accessed directly through matlab command:
 
 ```
-showdemo 3DSpineMS
+showdemo 3DSpineMFE
 ```
 
 ## License
