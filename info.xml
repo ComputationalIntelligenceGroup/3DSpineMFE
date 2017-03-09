@@ -2,9 +2,9 @@
     xsi:noNamespaceSchemaLocation="optional">
     <?xml-stylesheet type="text/xsl"href="optional"?>
     <!-- Version 1.0 -->
-    <!-- Copyright 23/02/2017 Mario Juez.-->
+    <!-- Copyright 09/03/2017 Mario Juez.-->
     <matlabrelease>R2014b</matlabrelease>
-    <name>3DSpineMS</name>
+    <name>3DSpineMFE</name>
     <type>toolbox</type>
     <icon></icon>
     <help_location>doc/html</help_location>
