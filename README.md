@@ -44,7 +44,7 @@ Once the toolbox has been installed, its documentation can be browsed through `d
 
 ![3DSpineMFE Matlab help](http://i.imgur.com/ARL1Lsa.png)
 
-The library documentation can also be accessed directly through matlab command:
+The toolbox documentation can also be accessed directly through matlab command:
 
 ```
 showdemo 3DSpineMFE
