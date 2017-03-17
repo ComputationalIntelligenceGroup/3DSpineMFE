@@ -34,7 +34,7 @@ function compute_features(root_spines_neck_repaired_path,file_name)
     header=[header regexp(deblank(sprintf('B_r_%d ', 1:(num_curves-2))), ' ', 'split')]; %Minor axis
     header=[header regexp(deblank(sprintf('B_R_%d ', 1:(num_curves-2))), ' ', 'split')]; %Major axis
     
-    ratio_ellipses_comb=combnk(1:(num_curves-2),2);
+    ratio_ellipses_comb=flipud(combnk(1:(num_curves-2),2));
     num_elem=size(ratio_ellipses_comb,1);
     header=[header regexp(deblank(sprintf('ratio_%d_%d ', ratio_ellipses_comb')), ' ', 'split')]; %Ratio between sections
     header=[header regexp(deblank(sprintf('inst_Theta_%d ', 1:(num_curves-2))), ' ', 'split')]; %Instant direction elevation (Theta)
