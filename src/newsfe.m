@@ -85,7 +85,7 @@ classdef newsfe
             process_VRMLs(VRML_folder, TIF_folder, MAT_folder);
         end
         
-        function neck_repaired_folder = repairSpines(obj, root_MAT, root_insertion_points, repair_neck)
+        function neck_repaired_folder = repairSpines(obj, root_MAT, root_insertion_points)
             %Repairs fragmented spines and neck of the spines.
             %A spine is fragmented when the VRML 3D model contains more
             %than one part. Reparation process is to try to merge all parts
