@@ -194,15 +194,38 @@ function [instance_row] = compute_spine_features(repaired_spine,insertion_point_
     ratio_sections=proportional_areas(find(proportional_areas~=0));
     
     volume=meshVolume(repaired_spine.vertices,repaired_spine.faces);
-    surface=meshSurfaceArea(repaired_spine.vertices,repaired_spine.faces);
+    surface=compute_area_mesh(repaired_spine.vertices,repaired_spine.faces);
     volume_section=zeros(size(curve,2)-1,1);
     surface_section=zeros(size(curve,2)-1,1);
     ellipse_area=[0;ellipse_area; 0];
     for(i=2:size(curve,2))
         cv_vertex=[curve{i};curve{i-1}];
         [cv_faces,volume_section(i-1)]=convhull(cv_vertex);
-        cv_edges = meshEdges(cv_faces);
-        surface_section(i-1)=meshSurfaceArea(cv_vertex,cv_edges,cv_faces)-ellipse_area(i-1)-ellipse_area(i);
+        surface_section(i-1)=compute_area_mesh(cv_vertex,cv_faces)-ellipse_area(i-1)-ellipse_area(i);
     end
     instance_row=(vertcat(vector_length,elevation,cos_phi,minor_axis,major_axis,ratio_sections,perp_vectors_sph(:,1),perp_vectors_sph(:,2),volume,volume_section,surface,surface_section))';
+end
+
+function area=compute_area_mesh(vertices,faces)
+%COMPUTE_AREA_MESH Computes the area mesh (surface) of the spine. 
+%
+%   area = compute_area_mesh(vertices,faces)
+%
+%   Input parameters:
+%       - vertices [1x2] array : Spine vertices.
+%       - faces [1xN] array : Spine faces.
+%
+%   Output parameters:
+%       - area [1xN] array : The computed area mesh.
+%
+%Author: Luengo-Sanchez, S.
+%
+%See also COMPUTE_SPINE_FEATURES
+
+    V = vertices;
+    F = faces;
+    A = V(F(:, 2), :) - V(F(:, 1), :);
+    B = V(F(:, 3), :) - V(F(:, 1), :);
+    C = cross(A, B, 2);
+    area = 1/2 * sum(sqrt(sum(C.^2, 2)));
 end
